@@ -1,7 +1,8 @@
-// media duas functions uma para dar retur e outra para fazer calculos e const prompt para pedir e mostrar a quantidade e o valor
+//media, duas functions uma calcula a quantidade 
 function calcularSubtotalItem(item) {
     return item.preco * item.quantidade;
 }
+
 
 function calcularTotalCarrinho(carrinho) {
     let total = 0;
@@ -11,19 +12,22 @@ function calcularTotalCarrinho(carrinho) {
     return total;
 }
 
-const preco1 = Number(prompt("Digite o PREÇO do Produto 1:"));
-const qtd1 = Number(prompt("Digite a QUANTIDADE do Produto 1:"));
+const nomeDigitado = prompt("Digite o nome do produto:");
+const precoDigitado = parseFloat(prompt("Digite o preço do produto :"));
+const qtdDigitada = parseInt(prompt("Digite a quantidade:"));
 
+const itemAtual = { 
+    preco: precoDigitado, 
+    quantidade: qtdDigitada 
+};
 
-const preco2 = Number(prompt("Digite o PREÇO do Produto 2:"));
-const qtd2 = Number(prompt("Digite a QUANTIDADE do Produto 2:"));
+const carrinho = [itemAtual];
 
+const subtotal = calcularSubtotalItem(itemAtual);
+const totalGeral = calcularTotalCarrinho(carrinho);
 
-const meuCarrinho = [
-    { preco: preco1, quantidade: qtd1 },
-    { preco: preco2, quantidade: qtd2 } 
-];
-
-const valorTotal = calcularTotalCarrinho(meuCarrinho);
-
-alert(`O valor total da sua compra é: R$ ${valorTotal.toFixed(2)}`);
+alert(
+    "Produto: " + nomeDigitado + "\n" +
+    "Subtotal do item: R$ " + subtotal.toFixed(2) + "\n\n" +
+    "TOTAL DO CARRINHO: R$ " + totalGeral.toFixed(2)
+);
